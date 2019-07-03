@@ -33,7 +33,7 @@
         <receiver
             android:name=".receiver.MyReceiver"
             android:enabled="true"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.mcpush.android.intent.REGISTRATIONID" /> <!--在用 Required 用户注册SDK的intent -->
                 <action android:name="cn.mcpush.android.intent.UNREGISTRATION" />

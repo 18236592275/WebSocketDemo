@@ -7,7 +7,7 @@
 
 
     <application>
-        <service android:name=".service.McPushService"></service>
+        <service android:name=".service.McPushService" />
         <service android:name=".service.McpushFakeService" />
 
         <receiver android:name=".receiver.NotificationBroadcastReceiver" />
