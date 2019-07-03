@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.meicai.websocketdemo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".application.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--推送配置开始 -->
+        <meta-data
+            android:name="com.mc.push.api_key"
+            android:value="AIzaSyBhBFOgVQclaa8p1JJeqaZHiCo2nfiyBBo" />
+        <meta-data
+            android:name="com.mc.push.api_sign"
+            android:value="AIzaSyBhBFOgVQclaa8p1JJeqaZHiCo2nfiyBB1" />
+        <!--推送配置结束-->
+
+        <!--该广播接收器是否可以接受来自其它应用程序的广播-->
+        <receiver
+            android:name=".receiver.MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="cn.mcpush.android.intent.REGISTRATIONID" /> <!--在用 Required 用户注册SDK的intent -->
+                <action android:name="cn.mcpush.android.intent.UNREGISTRATION" />
+                <action android:name="cn.mcpush.android.intent.MESSAGE_RECEIVED" /> <!--在用 透传消息 Required 用户接收SDK自定义消息的intent -->
+                <action android:name="cn.mcpush.android.intent.NOTIFICATION_RECEIVED" /> <!--在用 收到通知栏消息 Required 用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.mcpush.android.intent.CONNECTION" />
+                <action android:name="cn.mcpush.android.intent.NOTIFICATION_CLICK_ACTION" /><!--在用  通知栏被点击-->
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

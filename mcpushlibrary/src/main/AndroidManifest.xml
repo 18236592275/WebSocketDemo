@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.meicai.mcpushlibrary">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application>
+        <service android:name=".service.McPushService"></service>
+        <service android:name=".service.McpushFakeService" />
+
+        <receiver android:name=".receiver.NotificationBroadcastReceiver" />
+    </application>
+</manifest>
