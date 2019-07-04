@@ -12,6 +12,10 @@ import android.util.Log;
 
 import com.meicai.mcpushlibrary.R;
 
+/**
+ * 辅助进程，因为Android8.0需要设置前台进程，但是设置前台进程顶部通知栏会出现通知栏弹框显示xxx应用正在运行中，
+ * 辅助进程是为了创建同样的消息id，然后消除顶部通知栏
+ */
 public class McpushFakeService extends Service {
     private static final String TAG = McpushFakeService.class.getSimpleName();
     private static String notificationId = "channelId";

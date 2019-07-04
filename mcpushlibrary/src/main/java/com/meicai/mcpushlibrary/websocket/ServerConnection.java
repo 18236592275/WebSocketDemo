@@ -54,7 +54,7 @@ public class ServerConnection {
     private String appkey;
     private String appSign;
     private String registrationId;//服务器返回的用户唯一id
-    Runnable runnable = new Runnable() {
+    private Runnable runnable = new Runnable() {
         @Override
         public void run() {
             if (NetWorkUtils.hasNetwork(context)) { //检测是否有网络，如果是因为网络原因导致连接失败，则在有网络的时候再次重试连接
