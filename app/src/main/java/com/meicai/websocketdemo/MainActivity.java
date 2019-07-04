@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.meicai.mcpushlibrary.global.Constants;
 import com.meicai.mcpushlibrary.receiver.NotificationBroadcastReceiver;
 import com.meicai.mcpushlibrary.service.McPushService;
+import com.meicai.mcpushlibrary.utils.NotificationPermissionUtil;
 import com.meicai.mcpushlibrary.websocket.ServerConnection;
 import com.ycbjie.notificationlib.NotificationUtils;
 
@@ -71,9 +73,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 PendingIntent pendingIntentClick = PendingIntent.getBroadcast(this, 0, intentClick, PendingIntent.FLAG_ONE_SHOT);
 
                 NotificationUtils notificationUtils = new NotificationUtils(this);
-                notificationUtils.
-                        setContentIntent(pendingIntentClick).
-                        sendNotification(15, "我是title", "我是message", com.meicai.mcpushlibrary.R.mipmap.ic_launcher);
+                if (NotificationPermissionUtil.isPermissionOpen(this)) {
+                    notificationUtils.
+                            setContentIntent(pendingIntentClick).
+                            sendNotification(15, "我是title", "我是message", com.meicai.mcpushlibrary.R.mipmap.ic_launcher);
+                } else {
+                    Toast.makeText(notificationUtils, "请打开通知栏权限", Toast.LENGTH_SHORT).show();
+                    NotificationPermissionUtil.openPermissionSetting(this);
+                }
                 break;
             case R.id.btn_interrupt:
                 Intent intent = new Intent(this, McPushService.class);
