@@ -35,7 +35,7 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.cancel(type);
         }
-        if (action.equals("notification_clicked")) {
+        if ("notification_clicked".equals(action)) {
             //处理点击事件
             Toast.makeText(context, "clicked " + bundle.get(Constants.MESSAGE), Toast.LENGTH_LONG).show();
             Intent intent1 = new Intent();

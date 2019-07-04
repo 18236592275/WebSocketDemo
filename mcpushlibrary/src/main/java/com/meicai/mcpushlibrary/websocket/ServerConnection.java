@@ -166,6 +166,7 @@ public class ServerConnection {
     private void showNotification(PushBean pushBean, Bundle bundle) {
         AlertBean alertBean = pushBean.data.alert;
         Intent intentClick = new Intent(context, NotificationBroadcastReceiver.class);
+        intentClick.setAction(Constants.NOTIFICATION_CLICKED);
         intentClick.putExtras(bundle);
         PendingIntent pendingIntentClick = PendingIntent.getBroadcast(context, 0, intentClick, PendingIntent.FLAG_ONE_SHOT);
 
